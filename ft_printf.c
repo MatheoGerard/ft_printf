@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 08:30:08 by mgerard           #+#    #+#             */
-/*   Updated: 2026/04/18 15:05:16 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/04/18 16:54:49 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,24 @@ int ft_printf(const char *str, ...)
 {
 	va_list args;
 	int	i;
+	int	count;
 
 	if (str == NULL)
 		return (-1);
 	va_start(args, str);
 	i = 0;
+	count = 0;
 	while (str[i] != '\0')
 	{
 		if (str[i] == '%')
 		{
 			i++;
 			if (str[i] == 's')
-				ft_putstr(va_arg(args, char *));
+				count += ft_putstr(va_arg(args, char *));
 			else if (str[i] == 'd' || str[i] == 'i')
-				ft_putnb(va_arg(args, int));
+			{
+				count += ft_putnb(va_arg(args, int));
+			}
 			else if (str[i] == 'c')
 				ft_putchar(va_arg(args, int));
 			else if (str[i] == '%')
@@ -50,7 +54,7 @@ int ft_printf(const char *str, ...)
 			ft_putchar(str[i]);
 		i++;
 	}
-	return (i);
+	return (i + count);
 }
 #include <stdio.h>
 int main(void)
@@ -62,6 +66,7 @@ int main(void)
 	int nb = 42;
 	int nb2 = 10000;
 	char dot = '.';
+
 	ft_printf("j ai envie de te dire %p au moins %i fois %c J en suis sur a %d%%.\n", str, nb, dot, nb2);
 	printf("j ai envie de te dire %p au moins %i fois %c J en suis sur a %d%%.\n", str, nb, dot, nb2);
 	
@@ -83,5 +88,18 @@ int main(void)
 	ft_printf("%X\n", 42947);
 	printf("%X\n", 42947);
 
-	printf("    %    \n");
+	ft_printf("je suis %s!\n");
+	printf("je suis %s!\n");
+
+	printf("%d\n", printf("%s %s\n", str, str));
+	printf("%d\n", ft_printf("%s %s\n", str, str));
+
+	printf("%d\n", ft_printf(NULL));
+	printf("%d\n", printf(NULL));
+
+	printf("%d\n", ft_printf("%s", ""));
+	printf("%d\n", printf("%s", ""));
+
+	printf("%d\n", ft_printf("je suis la pour la %d fois\n", 12345));
+	printf("%d\n", printf("je suis la pour la %d fois\n", 12345));
 }

@@ -6,13 +6,31 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 09:45:46 by mgerard           #+#    #+#             */
-/*   Updated: 2026/04/18 09:52:26 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/04/18 17:11:52 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putnb(int nb)
+int	ft_count_digits(int nb)
+{
+	int	count;
+
+	count = 0;
+	if (nb < 0)
+	{
+		nb = -nb;
+		count++;
+	}
+	while (nb >= 10)
+	{
+		nb /= 10;
+		count++;
+	}
+	return (count + 1);
+}
+
+int	ft_putnb(int nb)
 {
 	if (nb == INT_MIN)
 	{

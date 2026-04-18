@@ -6,13 +6,13 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 08:46:44 by mgerard           #+#    #+#             */
-/*   Updated: 2026/04/18 09:32:39 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/04/18 16:03:29 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putstr(const char *str)
+int	ft_putstr(const char *str)
 {
 	int	i;
 
@@ -22,4 +22,5 @@ void	ft_putstr(const char *str)
 		ft_putchar(str[i]);
 		i++;
 	}
+	return (i - 2);
 }
