@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 08:30:08 by mgerard           #+#    #+#             */
-/*   Updated: 2026/04/18 10:10:16 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/04/18 10:42:44 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,11 @@ int ft_printf(const char *str, ...)
 				ft_putnb(va_arg(args, int));
 			else if (str[i] == 'c')
 				ft_putchar(va_arg(args, int));
-			i++;
+			else if (str[i] == '%')
+				ft_putchar('%');
 		}
-		ft_putchar(str[i]);
+		else
+			ft_putchar(str[i]);
 		i++;
 	}
 	return (i);
@@ -45,6 +47,10 @@ int main(void)
 
 	const char *str = "BONJOUR";
 	int nb = 42;
+	int nb2 = 10000;
 	char dot = '.';
-	ft_printf("j ai envie de te dire %s au moins %d fois %c", str, nb, dot);
+	ft_printf("j ai envie de te dire %s au moins %d fois %c J en suis sur a %d%%.\n", str, nb, dot, nb2);
+	printf("j ai envie de te dire %s au moins %d fois %c J en suis sur a %d%%.\n", str, nb, dot, nb2);
+	ft_printf("%%%%%%%%%%%%\n");
+	printf("%%%%%%%%%%%%\n");
 }
