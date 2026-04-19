@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 08:30:08 by mgerard           #+#    #+#             */
-/*   Updated: 2026/04/19 14:33:39 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/04/19 20:06:50 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ int ft_printf(const char *str, ...)
 			if (str[i] == 's')
 				ft_putstr(va_arg(args, char *), &count);
 			else if (str[i] == 'd' || str[i] == 'i')
-				ft_putstr(ft_itoa(va_arg(args, int)), &count);
+			{
+				ft_putnbr(va_arg(args, int), &count);
+				count -= 2;
+			}
 			else if (str[i] == 'c')
 				count += ft_putchar(va_arg(args, int));
 			else if (str[i] == '%')
@@ -42,7 +45,10 @@ int ft_printf(const char *str, ...)
 				ft_dec_to_hex_ptr(va_arg(args, uintptr_t), "0123456789abcdef", &count);
 			}
 			else if (str[i] == 'u')
-				ft_putstr(ft_itoa_unsigned(va_arg(args, unsigned int)), &count);
+			{
+				ft_putnbr_unsigned(va_arg(args, unsigned int), &count);
+				count -= 2;
+			}
 			else if (str[i] == 'x')
 			{
 				ft_dec_to_hex(va_arg(args, unsigned int), "0123456789abcdef", &count);
@@ -112,17 +118,17 @@ int main(void)
 */
 
 	char c = 'B';
-	char *s = "Je maffiche WOUAW!!!";
+	char *s = "Je ";
 	char *p = &c;
-	int d = -875393;
-	unsigned int u = 4294967293;
-	unsigned int x = 4294967293;
-	unsigned int X = 4294967293;
+	int d = 0;
+	unsigned int u = 0;
+	unsigned int x = 0;
+	unsigned int X = 0;
 
 
-	printf("nombre de char: %d\n", ft_printf("je suis le test final:\nchar: %c\nstr: %s\nptr: %p\nint: %d\nuint: %u\nhex low: %x\nhex up: %X\npercent: %%\n", c, s, p, d, u, x, X));
+	printf("nombre de char: %d\n", ft_printf("je suis le test final:\nchar: %c\nstr: %s\nptr: %p\nint: %d\nuint: %u\nhex low: %x\nhex up: %X\npercent: %%\n", c, s, p, d, u,x, X));
 	printf("\n");
-	printf("nombre de char: %d\n", printf("je suis le test final:\nchar: %c\nstr: %s\nptr: %p\nint: %d\nuint: %u\nhex low: %x\nhex up: %X\npercent: %%\n", c, s, p, d, u, x, X));
+	printf("nombre de char: %d\n", printf("je suis le test final:\nchar: %c\nstr: %s\nptr: %p\nint: %d\nuint: %u\nhex low: %x\nhex up: %X\npercent: %%\n", c, s, p, d, u,x, X));
 
 
 

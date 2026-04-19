@@ -1,25 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/19 11:29:18 by mgerard           #+#    #+#             */
-/*   Updated: 2026/04/19 11:32:40 by mgerard          ###   ########.fr       */
+/*   Created: 2026/04/19 18:53:00 by mgerard           #+#    #+#             */
+/*   Updated: 2026/04/19 19:52:54 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	ft_strlen(char *str)
+void	ft_putnbr(int nb, int *count)
 {
-	size_t	count;
-
-	count = 0;
-	while (str[count] != '\0')
+	if (nb == INT_MIN)
 	{
-		count++;
+		write(1, "-2147483648", 11);
+		*count += 11;
+		return ;
 	}
-	return (count);
+	if (nb < 0)
+	{
+		write(1, "-", 1);
+		nb = - nb;
+		*count += 1;
+	}
+	if (nb >= 10)
+	{
+		ft_putnbr(nb / 10, count);
+		ft_putnbr(nb % 10, count);
+	}
+	else
+	{
+		nb = nb + 48;
+		write(1, &nb, 1);
+		*count += 1;
+	}
 }
