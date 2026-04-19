@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnb_unsigned.c                                :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/18 13:58:14 by mgerard           #+#    #+#             */
-/*   Updated: 2026/04/18 13:59:32 by mgerard          ###   ########.fr       */
+/*   Created: 2026/04/19 11:29:18 by mgerard           #+#    #+#             */
+/*   Updated: 2026/04/19 11:32:40 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putnb_unsigned(unsigned int nb)
+size_t	ft_strlen(char *str)
 {
-	if (nb >= 10)
+	size_t	count;
+
+	count = 0;
+	while (str[count] != '\0')
 	{
-		ft_putnb(nb / 10);
-		ft_putnb(nb % 10);
+		count++;
 	}
-	else
-	{
-		ft_putchar(nb + 48);
-	}
+	return (count);
 }

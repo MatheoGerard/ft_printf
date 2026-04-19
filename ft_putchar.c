@@ -6,13 +6,14 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 08:47:59 by mgerard           #+#    #+#             */
-/*   Updated: 2026/04/18 08:51:52 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/04/19 13:59:52 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putchar(char c)
+int	ft_putchar(char c)
 {
 	write(1, &c, 1);
+	return (-1);
 }

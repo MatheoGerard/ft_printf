@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 08:30:08 by mgerard           #+#    #+#             */
-/*   Updated: 2026/04/18 16:54:49 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/04/19 14:33:39 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,26 +29,30 @@ int ft_printf(const char *str, ...)
 		{
 			i++;
 			if (str[i] == 's')
-				count += ft_putstr(va_arg(args, char *));
+				ft_putstr(va_arg(args, char *), &count);
 			else if (str[i] == 'd' || str[i] == 'i')
-			{
-				count += ft_putnb(va_arg(args, int));
-			}
+				ft_putstr(ft_itoa(va_arg(args, int)), &count);
 			else if (str[i] == 'c')
-				ft_putchar(va_arg(args, int));
+				count += ft_putchar(va_arg(args, int));
 			else if (str[i] == '%')
-				ft_putchar('%');
+				count += ft_putchar('%');
 			else if (str[i] == 'p')
 			{
-				ft_putstr("0x");
-				ft_dec_to_hex_ptr(va_arg(args, uintptr_t), "0123456789abcdef");
+				ft_putstr("0x", &count);
+				ft_dec_to_hex_ptr(va_arg(args, uintptr_t), "0123456789abcdef", &count);
 			}
 			else if (str[i] == 'u')
-				ft_putnb_unsigned(va_arg(args, unsigned int));
+				ft_putstr(ft_itoa_unsigned(va_arg(args, unsigned int)), &count);
 			else if (str[i] == 'x')
-				ft_dec_to_hex(va_arg(args, unsigned int), "0123456789abcdef");
+			{
+				ft_dec_to_hex(va_arg(args, unsigned int), "0123456789abcdef", &count);
+				count -= 2;
+			}
 			else if (str[i] == 'X')
-				ft_dec_to_hex(va_arg(args, unsigned int), "0123456789ABCDEF");
+			{
+				ft_dec_to_hex(va_arg(args, unsigned int), "0123456789ABCDEF", &count);
+				count -= 2;
+			}
 		}
 		else
 			ft_putchar(str[i]);
@@ -59,7 +63,7 @@ int ft_printf(const char *str, ...)
 #include <stdio.h>
 int main(void)
 {
-	const char *str = "BONJOUR";
+/*	const char *str = "BONJOUR";
 
 	int a = 2134;
 	int b = 2134;
@@ -100,6 +104,31 @@ int main(void)
 	printf("%d\n", ft_printf("%s", ""));
 	printf("%d\n", printf("%s", ""));
 
-	printf("%d\n", ft_printf("je suis la pour la %d fois\n", 12345));
-	printf("%d\n", printf("je suis la pour la %d fois\n", 12345));
+	printf("%d\n", ft_printf("je suis la pour la %d fois\n", UINT_MAX));
+	printf("%d\n", printf("je suis la pour la %d fois\n", UINT_MAX));
+
+	printf("%d\n", ft_printf("je suis la pour la %u fois\n", 0));
+	printf("%d\n", printf("je suis la pour la %u fois\n", 0));
+*/
+
+	char c = 'B';
+	char *s = "Je maffiche WOUAW!!!";
+	char *p = &c;
+	int d = -875393;
+	unsigned int u = 4294967293;
+	unsigned int x = 4294967293;
+	unsigned int X = 4294967293;
+
+
+	printf("nombre de char: %d\n", ft_printf("je suis le test final:\nchar: %c\nstr: %s\nptr: %p\nint: %d\nuint: %u\nhex low: %x\nhex up: %X\npercent: %%\n", c, s, p, d, u, x, X));
+	printf("\n");
+	printf("nombre de char: %d\n", printf("je suis le test final:\nchar: %c\nstr: %s\nptr: %p\nint: %d\nuint: %u\nhex low: %x\nhex up: %X\npercent: %%\n", c, s, p, d, u, x, X));
+
+
+
+	//printf("nombre de char print: %d\n", ft_printf("%x", 4294967));
+	//printf("nombre de char print: %d\n", printf("%x", 4294967));
+	//printf("\n");
+	//printf("nombre de char print: %d\n%p\n", ft_printf("%x", 4294967));
+	//printf("nombre de char print: %d\n%p\n", printf("%x", 4294967));
 }
