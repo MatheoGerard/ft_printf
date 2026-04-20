@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 08:30:08 by mgerard           #+#    #+#             */
-/*   Updated: 2026/04/20 09:39:11 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/04/20 17:15:35 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,9 @@ int ft_printf(const char *str, ...)
 		if (str[i] == '%')
 		{
 			i++;
+			format_nbs(str, i, &count, args);
 			if (str[i] == 's')
 				ft_putstr(va_arg(args, char *), &count);
-			else if (str[i] == 'd' || str[i] == 'i')
-			{
-				ft_putnbr(va_arg(args, int), &count);
-				count -= 2;
-			}
 			else if (str[i] == 'c')
 				count += ft_putchar(va_arg(args, int));
 			else if (str[i] == '%')
@@ -120,7 +116,7 @@ int main(void)
 	char c = 'B';
 	char *s = "Je ";
 	char *p = &c;
-	int d = 0;
+	int d = -34534;
 	unsigned int u = 0;
 	unsigned int x = 0;
 	unsigned int X = 0;
