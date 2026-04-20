@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 08:30:08 by mgerard           #+#    #+#             */
-/*   Updated: 2026/04/20 17:15:35 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/04/20 22:36:16 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,32 +29,13 @@ int ft_printf(const char *str, ...)
 		{
 			i++;
 			format_nbs(str, i, &count, args);
-			if (str[i] == 's')
-				ft_putstr(va_arg(args, char *), &count);
-			else if (str[i] == 'c')
-				count += ft_putchar(va_arg(args, int));
-			else if (str[i] == '%')
-				count += ft_putchar('%');
-			else if (str[i] == 'p')
-			{
-				ft_putstr("0x", &count);
-				ft_dec_to_hex_ptr(va_arg(args, uintptr_t), "0123456789abcdef", &count);
-			}
-			else if (str[i] == 'u')
-			{
-				ft_putnbr_unsigned(va_arg(args, unsigned int), &count);
-				count -= 2;
-			}
-			else if (str[i] == 'x')
-			{
-				ft_dec_to_hex(va_arg(args, unsigned int), "0123456789abcdef", &count);
-				count -= 2;
-			}
-			else if (str[i] == 'X')
-			{
-				ft_dec_to_hex(va_arg(args, unsigned int), "0123456789ABCDEF", &count);
-				count -= 2;
-			}
+			format_nbs_unsigned(str, i, &count, args);
+			format_hex_low(str, i, &count, args);
+			format_hex_high(str, i, &count, args);
+			format_hex_low_ptr(str, i, &count, args);
+			format_char(str, args, i, &count);
+			format_str(str, args, i, &count);
+			print_precent(str, &count, i);
 		}
 		else
 			ft_putchar(str[i]);
@@ -114,17 +95,17 @@ int main(void)
 */
 
 	char c = 'B';
-	char *s = "Je ";
+	char *s = "Je m'affiche WOUAW";
 	char *p = &c;
 	int d = -34534;
-	unsigned int u = 0;
-	unsigned int x = 0;
-	unsigned int X = 0;
+	unsigned int u = 874584;
+	unsigned int x = 78590;
+	unsigned int X = 657657;
 
 
-	printf("nombre de char: %d\n", ft_printf("je suis le test final:\nchar: %c\nstr: %s\nptr: %p\nint: %d\nuint: %u\nhex low: %x\nhex up: %X\npercent: %%\n", c, s, p, d, u,x, X));
+	printf("nombre de char: %d\n", ft_printf("je suis le test final:\nchar: %c\nstr: %s\nptr: %p\nint: %d\nuint: %u\nhex low: %x\nhex up: %X\npercent: %%\n", c, s, p, d, u, x, X));
 	printf("\n");
-	printf("nombre de char: %d\n", printf("je suis le test final:\nchar: %c\nstr: %s\nptr: %p\nint: %d\nuint: %u\nhex low: %x\nhex up: %X\npercent: %%\n", c, s, p, d, u,x, X));
+	printf("nombre de char: %d\n", printf("je suis le test final:\nchar: %c\nstr: %s\nptr: %p\nint: %d\nuint: %u\nhex low: %x\nhex up: %X\npercent: %%\n", c, s, p, d, u, x, X));
 
 
 

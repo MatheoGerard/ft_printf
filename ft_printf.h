@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 08:40:08 by mgerard           #+#    #+#             */
-/*   Updated: 2026/04/20 17:14:52 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/04/20 22:26:54 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,12 @@ void	ft_dec_to_hex(unsigned int nb, char *base, int *count);
 void	ft_putstr(const char *str, int *count);
 void	ft_putnbr(int nb, int *count);
 void	format_nbs(char const *str, int i, int *count,va_list args);
+void	format_nbs_unsigned(char const *str, unsigned int i, int *count, va_list args);
+void	format_hex_low(char const *str, int i, int *count, va_list args);
+void	format_hex_high(char const *str, int i, int *count, va_list args);
+void	format_hex_low_ptr(char const *str, int i, int *count, va_list args);
+void	format_char(const char *str, va_list args, int i, int *count);
+void	format_str(const char *str, va_list args, int i, int *count);
+void	print_precent(const char *str,int *count, int i);
 
 #endif // FT_PRINTF_H

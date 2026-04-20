@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   format_nbs.c                                       :+:      :+:    :+:   */
+/*   format_char.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/20 16:40:41 by mgerard           #+#    #+#             */
-/*   Updated: 2026/04/20 21:40:23 by mgerard          ###   ########.fr       */
+/*   Created: 2026/04/20 22:12:01 by mgerard           #+#    #+#             */
+/*   Updated: 2026/04/20 22:25:42 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	format_nbs(char const *str, int i, int *count, va_list args)
+void	format_char(const char *str, va_list args, int i, int *count)
 {
-	if (str[i] == 'd' || str[i] == 'i')
-	{
-		ft_putnbr(va_arg(args, int), count);
-		*count -= 2;
-	}
+	if (str[i] == 'c')
+		*count += ft_putchar(va_arg(args, int));
 }
 
-void	format_nbs_unsigned(char const *str, unsigned int i, int *count, va_list args)
+void	format_str(const char *str, va_list args, int i, int *count)
 {
-	if (str[i] == 'u')
-	{
-		ft_putnbr_unsigned(va_arg(args, unsigned int), count);
-		*count -= 2;
-	}
+	if (str[i] == 's')
+		ft_putstr(va_arg(args, char *), count);
 }
-	
+
+void	print_precent(const char *str, int *count, int i)
+{
+	if (str[i] == '%')
+		*count += ft_putchar('%');
+}
