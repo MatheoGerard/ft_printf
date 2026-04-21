@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 08:30:08 by mgerard           #+#    #+#             */
-/*   Updated: 2026/04/21 06:00:44 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/04/21 17:04:13 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,7 @@ int ft_printf(const char *str, ...)
 		{
 			i++;
 			format_nbs(str, i, &count, args);
-			format_nbs_unsigned(str, i, &count, args);
-			format_hex_low(str, i, &count, args);
-			format_hex_high(str, i, &count, args);
-			format_hex_low_ptr(str, i, &count, args);
+			format_hex(str, i, &count, args);
 			format_char(str, args, i, &count);
 			print_precent(str, &count, i);
 		}
@@ -69,11 +66,11 @@ int main(void)
 	printf("%u\n", 4299677295);
 	ft_printf("%u\n", 4299677295);
 
-	ft_printf("%x", 4294967);
-	printf("%x", 4294967);
+	ft_printf("%x", NULL);
+	printf("%x", NULL);
 	
-	ft_printf("%X\n", 42947);
-	printf("%X\n", 42947);
+	ft_printf("%X\n", NULL);
+	printf("%X\n", NULL);
 
 	ft_printf("je suis %s!\n");
 	printf("je suis %s!\n");
@@ -92,8 +89,8 @@ int main(void)
 
 	printf("%d\n", ft_printf("je suis la pour la %u fois\n", 0));
 	printf("%d\n", printf("je suis la pour la %u fois\n", 0));
-*/
 
+*/
 	char c = 'B';
 	char *s = "Je m'affiche WOUAW";
 	char *p = &c;
@@ -103,9 +100,9 @@ int main(void)
 	unsigned int X = 657657;
 
 
-	printf("nombre de char: %d\n", ft_printf("je suis le test final:\nchar: %c\nstr: %s\nptr: %p\nint: %d\nuint: %u\nhex low: %x\nhex up: %X\npercent: %%\n", c, s, p, d, u, x, X));
+	printf("nombre de char: %d\n", ft_printf("je suis le test final:\nchar: %c\nstr: %s\nptr: %p\nint: %d\nuint: %u\nhex low: %x\nhex up: %X\npercent: %%\n", c, NULL, NULL, NULL, NULL, NULL, NULL));
 	printf("\n");
-	printf("nombre de char: %d\n", printf("je suis le test final:\nchar: %c\nstr: %s\nptr: %p\nint: %d\nuint: %u\nhex low: %x\nhex up: %X\npercent: %%\n", c, s, p, d, u, x, X));
+	printf("nombre de char: %d\n", printf("je suis le test final:\nchar: %c\nstr: %s\nptr: %p\nint: %d\nuint: %u\nhex low: %x\nhex up: %X\npercent: %%\n", c, NULL, NULL, NULL, NULL, NULL, NULL));
 
 
 
@@ -114,4 +111,5 @@ int main(void)
 	//printf("\n");
 	//printf("nombre de char print: %d\n%p\n", ft_printf("%x", 4294967));
 	//printf("nombre de char print: %d\n%p\n", printf("%x", 4294967));
+
 }
