@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 08:30:08 by mgerard           #+#    #+#             */
-/*   Updated: 2026/04/20 22:36:16 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/04/21 06:00:44 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ int ft_printf(const char *str, ...)
 			format_hex_high(str, i, &count, args);
 			format_hex_low_ptr(str, i, &count, args);
 			format_char(str, args, i, &count);
-			format_str(str, args, i, &count);
 			print_precent(str, &count, i);
 		}
 		else
 			ft_putchar(str[i]);
 		i++;
 	}
+	va_end(args);
 	return (i + count);
 }
 #include <stdio.h>

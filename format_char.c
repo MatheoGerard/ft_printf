@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 22:12:01 by mgerard           #+#    #+#             */
-/*   Updated: 2026/04/20 22:25:42 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/04/21 05:58:03 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,7 @@ void	format_char(const char *str, va_list args, int i, int *count)
 {
 	if (str[i] == 'c')
 		*count += ft_putchar(va_arg(args, int));
-}
-
-void	format_str(const char *str, va_list args, int i, int *count)
-{
-	if (str[i] == 's')
+	else if (str[i] == 's')
 		ft_putstr(va_arg(args, char *), count);
 }
 
