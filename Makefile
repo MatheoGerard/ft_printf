@@ -6,22 +6,21 @@
 #    By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/20 09:24:55 by mgerard           #+#    #+#              #
-#    Updated: 2026/04/21 16:17:52 by mgerard          ###   ########.fr        #
+#    Updated: 2026/04/21 18:50:41 by mgerard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = libftprintf.a
 
 SRCS = ft_putnbr_unsigned.c ft_putnbr.c ft_dec_to_hex.c \
        ft_printf.c ft_dec_to_hex_ptr.c ft_putstr.c \
-       ft_printf.c ft_putchar.c
+       ft_putchar.c format_char.c format_hex.c \
+       format_nbs.c 
 
 OBJS = $(SRCS:.c=.o)
 
 CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
-
-bonus: all
 
 all: $(NAME)
 
