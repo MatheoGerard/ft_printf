@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/19 18:53:00 by mgerard           #+#    #+#             */
-/*   Updated: 2026/04/19 19:52:54 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/04/22 09:41:37 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_putnbr(int nb, int *count)
 	if (nb < 0)
 	{
 		write(1, "-", 1);
-		nb = - nb;
+		nb = -nb;
 		*count += 1;
 	}
 	if (nb >= 10)

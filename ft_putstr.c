@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 08:46:44 by mgerard           #+#    #+#             */
-/*   Updated: 2026/04/22 07:49:21 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/04/22 09:42:12 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	ft_putstr(const char *str, int *count)
 	{
 		write(1, "(null)", 6);
 		*count += 6;
-
 	}
 	i = 0;
 	while (str && str[i] != '\0')
