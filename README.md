@@ -21,7 +21,7 @@ To compile the library, run:
 make
 ```
 
-This will generate the libft.a static library.
+This will generate the libftprintf.a static library.
 
 To recompile everything from scratch:
 
@@ -46,10 +46,10 @@ make fclean
 To use the library in your project, include the header file:
 
 ```c
-#include "libft.h"
+#include "ft_printf.h"
 ```
 
-Then compile your program with libft.a:
+Then compile your program with libftprintf.a:
 
 ```bash
 gcc your_file.c -L. -lft
@@ -57,13 +57,15 @@ gcc your_file.c -L. -lft
 
 ### Example
 
+```c
 #include "ft_printf.h"
 
 int main(void)
 {
-ft_printf("Hello %s, number: %d\n", "world", 42);
-return (0);
+    ft_printf("Hello %s, number: %d\n", "world", 42);
+    return (0);
 }
+```
 
 ## Features
 
