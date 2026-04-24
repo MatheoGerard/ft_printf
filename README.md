@@ -109,9 +109,8 @@ The core algorithm is based on sequential parsing of the format string.
 
 ### Documentation
 
-* https://en.cppreference.com/w/c/io/fprintf
+* https://learn.microsoft.com/fr-fr/cpp/c-runtime-library/reference/va-arg-va-copy-va-end-va-start?view=msvc-170
 * man 3 printf
-* https://en.cppreference.com/w/c/variadic
 
 ### AI Usage
 
