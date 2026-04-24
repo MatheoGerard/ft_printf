@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 08:40:08 by mgerard           #+#    #+#             */
-/*   Updated: 2026/04/22 09:38:26 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/04/24 14:00:14 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,5 @@ void	format_nbs(char const *str, int i, int *count, va_list args);
 void	format_hex(char const *str, int i, int *count, va_list args);
 void	format_char(const char *str, va_list args, int i, int *count);
 void	print_precent(const char *str, int *count, int i);
-void	ptr_format(const char *str, int i, va_list args, int *count);
 
 #endif
