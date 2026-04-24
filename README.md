@@ -150,7 +150,6 @@ The core algorithm is based on sequential parsing of the format string.
 
 AI tools were used to:
 
-* Understand variadic functions
 * Structure the README
 
 No critical parts of the implementation were automatically generated.
