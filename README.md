@@ -11,20 +11,49 @@ This implementation supports several format specifiers (such as %d, %s, %x, etc.
 
 ## Instructions
 
+This section explains how to compile and use the library.
+
 ### Compilation
 
-To compile the library:
-make
+To compile the library, run:
 
-This will generate the libftprintf.a file.
+```bash
+make
+```
+
+This will generate the libft.a static library.
+
+To recompile everything from scratch:
+
+```bash
+make re
+```
+
+To remove object files:
+
+```bash
+make clean
+```
+
+To remove object files and the library:
+
+```bash
+make fclean
+```
 
 ### Usage
 
-Include the header in your project:
-#include "ft_printf.h"
+To use the library in your project, include the header file:
 
-Compile your program with:
-gcc main.c libftprintf.a
+```c
+#include "libft.h"
+```
+
+Then compile your program with libft.a:
+
+```bash
+gcc your_file.c -L. -lft
+```
 
 ### Example
 
