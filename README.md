@@ -66,7 +66,10 @@ int main(void)
     return (0);
 }
 ```
-
+output:
+```bash
+Hello world, number: 42
+```
 ## Features
 
 * Supported conversions:
