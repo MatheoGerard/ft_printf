@@ -48,6 +48,39 @@ return (0);
   * %p : pointer
   * %% : percent sign
 
+## Functions Overview
+
+### Core Function
+
+| Function Name | Prototype                            | Description                                                             |
+| ------------- | ------------------------------------ | ----------------------------------------------------------------------- |
+| ft_printf     | int ft_printf(const char *str, ...); | Main function that parses the format string and prints formatted output |
+
+### Output Functions
+
+| Function Name      | Prototype                                             | Description                                     |
+| ------------------ | ----------------------------------------------------- | ----------------------------------------------- |
+| ft_putchar         | int ft_putchar(char c);                               | Writes a single character to standard output    |
+| ft_putstr          | void ft_putstr(const char *str, int *count);          | Writes a string and updates the character count |
+| ft_putnbr          | void ft_putnbr(int nb, int *count);                   | Prints a signed integer                         |
+| ft_putnbr_unsigned | void ft_putnbr_unsigned(unsigned int nb, int *count); | Prints an unsigned integer                      |
+
+### Hexadecimal & Pointer Functions
+
+| Function Name     | Prototype                                                     | Description                                          |
+| ----------------- | ------------------------------------------------------------- | ---------------------------------------------------- |
+| ft_dec_to_hex     | void ft_dec_to_hex(unsigned int nb, char *base, int *count);  | Converts and prints a number in hexadecimal          |
+| ft_dec_to_hex_ptr | void ft_dec_to_hex_ptr(uintptr_t nb, char *base, int *count); | Converts and prints a pointer address in hexadecimal |
+
+### Format Handling Functions
+
+| Function Name | Prototype                                                           | Description                                   |
+| ------------- | ------------------------------------------------------------------- | --------------------------------------------- |
+| format_nbs    | void format_nbs(char const *str, int i, int *count, va_list args);  | Handles numeric formats (%d, %i, %u)          |
+| format_hex    | void format_hex(char const *str, int i, int *count, va_list args);  | Handles hexadecimal formats (%x, %X, %p)      |
+| format_char   | void format_char(const char *str, va_list args, int i, int *count); | Handles character and string formats (%c, %s) |
+| print_precent | void print_precent(const char *str, int *count, int i);             | Handles %% (prints a percent sign)            |
+
 ## Algorithm & Data Structures
 
 ### Algorithm Choice
@@ -58,19 +91,19 @@ The core algorithm is based on sequential parsing of the format string.
 2. When encountering %:
 
    * Analyze the next character to determine the format type.
-   * Call the corresponding handler function (e.g., print_int, print_str).
+   * Call the corresponding handler function.
 3. Use va_list, va_start, va_arg, and va_end to retrieve arguments.
 
 ### Justification
 
-* Linear parsing (O(n)): simple and efficient for this use case.
-* Modular design: each conversion is handled by a dedicated function, improving readability and maintainability.
-* No complex data structures: keeps the implementation aligned with project constraints.
+* Linear parsing (O(n)): simple and efficient.
+* Modular design: each format is handled separately.
+* Easy to extend and debug.
 
 ### Data Structures
 
 * va_list (from <stdarg.h>) to manage variadic arguments.
-* Strings (char *) for data manipulation and output.
+* char * strings for output handling.
 
 ## Resources
 
@@ -80,21 +113,11 @@ The core algorithm is based on sequential parsing of the format string.
 * man 3 printf
 * https://en.cppreference.com/w/c/variadic
 
-### Tutorials
-
-* Variadic functions in C
-* Articles about implementing printf
-
 ### AI Usage
 
 AI tools were used to:
 
-* Better understand variadic functions
-* Clarify certain behaviors of printf
-* Help structure this README
+* Understand variadic functions
+* Structure the README
 
 No critical parts of the implementation were automatically generated.
-
-## Author
-
-* <login1>
